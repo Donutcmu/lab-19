@@ -1,4 +1,90 @@
 // Please include header (lab21.h) here.
+#include<iostream>
+#include<string>
+#include<ctime>
+#include<cstdlib>
+#include<iomanip>
+
+using namespace std;
+
+
+void drawScene(char p_action,int p,char m_action,int m){
+	cout << "                                                       \n";
+	if(p_action == 'A'){
+	cout << "                                       "<< -p <<"\n";
+	}else{
+	cout << "                                                       \n";	
+	}	
+	cout << "                                *               *      \n";
+	cout << "                                **  *********  **      \n";
+	cout << "                                ****         ****      \n";
+	if(m_action == 'A'){
+	cout << "                 " << setw(5) << -m << "           *** **   ** ***       Attack!\n";
+	}else if(m_action == 'G'){
+	cout << "                                 *** **   ** ***       Guard!\n";
+	}else{
+	cout << "                                 *** **   ** ***       \n";	
+	}
+	cout << "                                  ** **   ** **        \n";
+	cout << "                   ***             *         *         \n";
+	if(p_action == 'A'){
+	cout << "        Attack!    ***  *           *********          \n";		
+	}else if(p_action == 'H'){
+	cout << "      Heal! +" << setw(2) << p << "    ***  *           *********          \n";
+	}else if(p_action == 'G'){
+	cout << "         Guard!    ***  *           *********          \n";
+	}else{
+	cout << "                   ***  *           *********          \n";	
+	}
+	cout << "                    *  *       ***  *  *  *            \n";
+	cout << "                  *****           **   *   *           \n";
+	cout << "                    *                  *    ***        \n";
+	cout << "                   * *               **        *       \n";
+	cout << "                  *   *                                \n";
+	cout << "                                                       \n";
+};
+
+
+void playerWin(){	
+	cout << "*******************************************************\n";
+	for(int i = 0; i < 3; i++) cout << "*                                                     *\n";
+	cout << "*                   YOU WIN!!!                        *\n";
+	for(int i = 0; i < 3; i++) cout << "*                                                     *\n";
+	cout << "*******************************************************\n";
+};
+
+
+void playerLose(){
+	cout << "*******************************************************\n";
+	cout << "*                                                     *\n";
+	cout << "*                   YOU LOSE!!!                       *\n";
+	cout << "*                                                     *\n";
+	cout << "*******************************************************\n";
+};
+
+
+
+
+
+class Unit{
+		string name;
+		string type;		
+		int hp;
+		int hpmax;
+		int atk;
+		int def;
+		bool guard_on;		
+	public:			
+		void create(string);
+		void showStatus();
+		void newTurn();
+		int attack(Unit &);
+		int beAttacked(int);
+		int heal();	
+		void guard();
+		bool isDead();	
+		
+};
 
 int main(){
 	srand(time(0));
@@ -48,3 +134,4 @@ int main(){
 	}
 	return 0;
 }
+
